@@ -1,0 +1,66 @@
+:root {
+  --color-back: linear-gradient(#79d4ea, #2d7354);
+  --color-txt: #ffffff;
+  --color-title: #d89b3d;
+
+  --color-btn-txt: #ffffff;
+  --color-btn-back: #4a4e37;
+  --color-btn-back-hover: #5b6145;
+
+  --color-border: #d9d9d9;
+  --color-txt-alt: #075826;
+  --color-txt-mess: #75b38d;
+  --color-txt-err: #b95555;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  text-align: center;
+  background: var(--color-back);
+  color: var(--color-txt);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+}
+
+h1 {
+  margin: 30px auto;
+  font-size: 2.3rem;
+  line-height: 150%;
+  letter-spacing: 0.18rem;
+  color: var(--color-title);
+  text-transform: capitalize;
+}
+
