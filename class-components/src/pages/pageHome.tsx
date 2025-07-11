@@ -1,12 +1,12 @@
 import { Header } from "../components/Header/Header";
-import { Main } from "../components/Home/Main/Main";
+import { Home } from "../components/Home/Home";
 import { Footer } from "../components/Footer/Footer";
 
 export const PageHome = () => {
   return (
     <>
       <Header />
-      <Main />
+      <Home />
       <Footer />
     </>
   );

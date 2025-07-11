@@ -51,8 +51,13 @@ body {
 
 .container {
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 h1 {
