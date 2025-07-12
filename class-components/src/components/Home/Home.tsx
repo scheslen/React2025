@@ -1,12 +1,18 @@
 import "./home.css";
+import { Component } from 'react';
+import {Controls} from '../Controls/Controls.tsx'
+import { Results } from "../Results/Results.tsx";
 
-export const Home = () => {
-  return (
+
+export class Home extends Component {
+  render() {
+    return (
     <main className="main">
       <div className='container'>
-        <div className="controls"></div>
-        <div className="results"></div>
+        <Controls />
+        <Results />
       </div>
     </main>
   );
-};
+  }
+}
