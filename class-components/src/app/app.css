@@ -4,14 +4,13 @@
   --color-title: #d89b3d;
 
   --color-btn-txt: #ffffff;
-  --color-btn-back: #4a4e37;
-  --color-btn-back-hover: #5b6145;
+  --color-btn-back: #0e6866;
+  --color-btn-back-hover: #1fa7a4;
 
   --color-border: #d9d9d9;
   --color-txt-alt: #075826;
   --color-txt-mess: #75b38d;
   --color-txt-err: #b95555;
-
 }
 
 * {
@@ -69,3 +68,17 @@ h1 {
   text-transform: capitalize;
 }
 
+.btn {
+  width: 100px;
+  padding: 10px 20px;
+  color: var(--color-btn-txt);
+  background-color: var(--color-btn-back);
+  border: 1px solid var(--color-btn-back);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.5s ease-in;
+}
+
+.btn:hover{
+  background-color: var(--color-btn-back-hover);
+}

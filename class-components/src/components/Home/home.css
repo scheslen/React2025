@@ -2,15 +2,16 @@
   width: 100%;
 }
 
-.controls{
-  width: 80%;
-  min-height: 100px;
-  border: 1px solid var(--color-txt);
-}
-
-.results{
+.results {
   width: 80%;
   min-height: 400px;
   border: 1px solid var(--color-txt);
 }
 
+.error_btn {
+  background-color: #8f560b;
+}
+
+.error_btn:hover{
+  background-color: #c08130;
+}

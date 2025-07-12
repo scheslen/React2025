@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<PageHome />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PageHome />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 );
