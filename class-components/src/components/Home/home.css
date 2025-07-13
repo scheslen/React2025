@@ -2,16 +2,10 @@
   width: 100%;
 }
 
-.results {
-  width: 80%;
-  min-height: 400px;
-  border: 1px solid var(--color-txt);
-}
-
 .error_btn {
   background-color: #8f560b;
 }
 
-.error_btn:hover{
+.error_btn:hover {
   background-color: #c08130;
 }

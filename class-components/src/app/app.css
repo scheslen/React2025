@@ -79,6 +79,6 @@ h1 {
   transition: all 0.5s ease-in;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: var(--color-btn-back-hover);
 }

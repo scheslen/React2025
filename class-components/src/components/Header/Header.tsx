@@ -1,11 +1,14 @@
 import "./header.css";
+import { Component } from "react";
 
-export const Header = () => {
-  return (
-    <header className="header">
-      <div className="container">
-        <h1>Components</h1>
-      </div>
-    </header>
-  );
-};
+export class Header extends Component {
+  render() {
+    return (
+      <header className="header">
+        <div className="container">
+          <h1>Star Trek Movies</h1>
+        </div>
+      </header>
+    );
+  }
+}
