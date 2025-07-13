@@ -1,6 +1,6 @@
 import "./results.css";
 import { Component } from "react";
-import { IMovie } from "../../app/types";
+import { IMovie, IpropsMovie } from "../../app/types";
 
 export class Results extends Component {
   render() {
@@ -14,8 +14,8 @@ export class Results extends Component {
     return (
       <div className="results">
         <div className="results__list">
-          {aMovies.map((movie: IMovie) => (
-            <MovieCard key={movie.uid} />
+          {aMovies.map((imovie: IMovie) => (
+            <MovieCard  movie={imovie} />
           ))}
         </div>
       </div>
@@ -23,16 +23,23 @@ export class Results extends Component {
   }
 }
 
-export class MovieCard extends Component {
-  constructor(movie:IMovie){
-    super(movie)
-    // this.name=movie.title
-  }
+export class MovieCard extends Component <IpropsMovie>{
+  // mM : IMovie
+  // constructor(movie:IMovie){
+  //   super(movie)
+  //   this.mM = movie
+  //  }
   render() {
+    let description=''
+    description += this.props.movie.usReleaseDate
+    description += ` ${this.props.movie.mainDirector.name}`
+    description += ` ( years from ${this.props.movie.yearFrom} to ${this.props.movie.yearTo} ) `
+
+
     return (
-      <div className="results__item">
-        <div className="name">movie.title</div>
-        <div className="description">description</div>
+      <div className="results__item" key={this.props.movie.uid} >
+        <div className="results__item-name">{this.props.movie.title}</div>
+        <div className="results__item-description">{description}</div>
 
       </div>
     )
