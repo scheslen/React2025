@@ -12,9 +12,13 @@ export class Home extends Component {
         <div className="container">
           <Controls />
           <Results />
-          <button className="error_btn btn">Error</button>
+          <button className="btn error_btn" onClick={generateError}>Error</button>
         </div>
       </main>
     );
   }
+}
+
+function generateError (){
+  sendRequest("***");
 }

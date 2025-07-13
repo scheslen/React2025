@@ -17,3 +17,7 @@ export interface IMovie {
   yearFrom: number;
   yearTo: number;
 }
+
+export interface IpropsMovie {
+  movie: IMovie;
+}

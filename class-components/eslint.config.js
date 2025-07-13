@@ -10,11 +10,9 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      "plugin:prettier/recommended",
-      "prettier",
-      "prettier/recommended",
     ],
     files: ["**/*.{ts,tsx}"],
+
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
