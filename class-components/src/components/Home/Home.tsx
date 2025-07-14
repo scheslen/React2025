@@ -8,17 +8,19 @@ export class Home extends Component {
   render() {
     sendRequest("");
     return (
-      <main className="main">
-        <div className="container">
-          <Controls />
-          <Results />
+   
+       <main className="main">
+          <div className="container">
+            <Controls />
+            <Results />
           <button className="btn error_btn" onClick={generateError}>Error</button>
-        </div>
-      </main>
+          </div>
+       </main>
+    
     );
   }
 }
 
 function generateError (){
-  sendRequest("***");
+  throw new Error('Something went wrong!');
 }
