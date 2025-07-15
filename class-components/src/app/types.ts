@@ -22,7 +22,11 @@ export interface IpropsMovie {
   movie: IMovie;
 }
 
-export interface IState {
+export interface IHomeState {
   load: boolean;
   error: boolean;
+}
+
+export interface IControlState {
+  inputRequest: string;
 }

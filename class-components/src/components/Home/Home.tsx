@@ -4,16 +4,31 @@ import { Controls } from "../Controls/Controls.tsx";
 import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
-import { IState } from "../../app/types";
+import { IHomeState } from "../../app/types";
 
 export class Home extends Component {
-  state: IState = {
+  state: IHomeState = {
     error: false,
     load: false,
   };
 
+  async fetchData(inputRequest: string) {
+    this.setState({
+      load: true,
+    });
+
+    await sendRequest(inputRequest);
+
+    this.setState({
+      load: false,
+    });
+  }
+
+  componentDidMount(): void {
+    this.fetchData("");
+  }
+
   render() {
-   sendRequest("");
     return (
       <main className="main">
         <div className="container">
