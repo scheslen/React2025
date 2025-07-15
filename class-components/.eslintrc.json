@@ -1,19 +1,19 @@
 {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-    },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
-    },
-    "rules": {
-        "no-debugger": "off",
-        "no-console": "warn",
-        "class-methods-use-this": "off",
-        "@typescript-eslint/no-explicit-any": 2,
-        "max-lines-per-function": 40
-    }
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-debugger": "off",
+    "no-console": "warn",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-explicit-any": 2,
+    "max-lines-per-function": 40
+  }
 }

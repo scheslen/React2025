@@ -21,3 +21,8 @@ export interface IMovie {
 export interface IpropsMovie {
   movie: IMovie;
 }
+
+export interface IState {
+  load: boolean;
+  error: boolean;
+}

@@ -2,7 +2,6 @@ export async function sendRequest(inputRequest: string) {
   const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
   const request = inputRequest.trim() || "search";
 
-
   try {
     const response = await fetch(`${urlAPI}${request}`, { method: "GET" });
 

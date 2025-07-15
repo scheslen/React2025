@@ -6,8 +6,18 @@ export class Controls extends Component {
     return (
       <div className="controls">
         <input className="search__input"></input>
-        <button className="search__btn btn">Search</button>
+        <button className="search__btn btn" onClick={handleInput}>
+          Search
+        </button>
       </div>
     );
+  }
+}
+
+function handleInput() {
+  const pInput = document.querySelector(".search__input");
+  if (pInput) {
+    const sRequest = ""; //pInput.value
+    localStorage.setItem("request", sRequest);
   }
 }
