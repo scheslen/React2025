@@ -14,8 +14,6 @@ export async function sendRequest(inputRequest: string) {
       const data = await response.json();
       aMovies = data.movies;
 
-      console.log ('inputRequest', inputRequest)
-      console.log ('aMovies', aMovies)
       if (inputRequest.length > 0){
         aMovies = aMovies.filter((movie) => {return movie && movie.title && movie.title.includes(inputRequest)})
       }

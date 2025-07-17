@@ -31,3 +31,7 @@ export interface IControlState {
   load: boolean;
   inputRequest: string;
 }
+
+export interface IErrorState {
+    error:  boolean;
+  };

@@ -42,9 +42,9 @@ export class Controls extends Component {
       const sRequest = pInput.value.trim();
       localStorage.setItem("request", sRequest);
 
-      // this.setState({
-      //   inputRequest: sRequest
-      // });
+      this.setState({
+        inputRequest: sRequest
+      });
 
       await this.fetchData(sRequest);
     }
@@ -57,12 +57,10 @@ export class Controls extends Component {
           className="search__input"
           defaultValue={this.state.inputRequest}
         ></input>
-        <button className="search__btn btn" onClick={this.handleInput}>
+        <button className="search__btn btn" onClick={() => this.handleInput()}>
           Search
         </button>
       </div>
     );
   }
-
-  
 }

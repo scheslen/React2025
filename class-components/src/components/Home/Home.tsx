@@ -5,6 +5,7 @@ import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
 import { IHomeState } from "../../app/types";
+import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
 
 export class Home extends Component {
   state: IHomeState = {
@@ -35,15 +36,9 @@ export class Home extends Component {
         <div className="container">
           <Controls />
           {this.state.load ? <Loader /> : <Results />}
-          <button className="btn error_btn" onClick={generateError}>
-            Error
-          </button>
+          <ErrorButton />
         </div>
       </main>
     );
   }
-}
-
-function generateError() {
-  throw new Error("Something went wrong!");
 }
