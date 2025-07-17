@@ -13,7 +13,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "husky",
+    "prepare": "cd ..  &&  husky class-components/.husky",
     "precommit": "npm run lint && npm run format && npm test "
   },
   "husky": {
