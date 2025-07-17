@@ -1,6 +1,7 @@
 import "./controls.css";
 import { Component } from "react";
 import { IControlState } from "../../app/types";
+import { sendRequest} from "../../app/requests";
 
 export class Controls extends Component {
   state: IControlState = {
@@ -31,12 +32,14 @@ export class Controls extends Component {
     );
   }
 
-  handleInput() {
+  async handleInput() {
     const pInput: HTMLInputElement | null =
       document.querySelector(".search__input");
     if (pInput) {
       const sRequest = pInput.value.trim();
       localStorage.setItem("request", sRequest);
+
+      await sendRequest(sRequest);
     }
   }
 }

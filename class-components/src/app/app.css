@@ -30,6 +30,7 @@ img {
 
 a {
   text-decoration: none;
+  color: var(--color-txt);
 }
 
 li {
@@ -81,4 +82,9 @@ h1 {
 
 .btn:hover {
   background-color: var(--color-btn-back-hover);
+}
+
+.message {
+  margin: 30px 0;
+  color : var(--color-txt);
 }

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import { Header } from "../components/Header/Header";
 
 export const PageNotFound = () => {
   return (
     <div>
-      <h2>Page not found</h2>
+      <Header />
+      <h2 className="message">Page not found</h2>
       <div>
-        <button>{<Link to="/">Back to home</Link>}</button>
+        <button className="btn">{<Link to="/">Back to home</Link>}</button>
       </div>
     </div>
   );
