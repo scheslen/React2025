@@ -1,8 +1,10 @@
 import { IMovie } from "./types";
 
 export async function sendRequest(inputRequest: string) {
+
   const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
-  const request = inputRequest.trim() || "search";
+  const request =  "search";
+
   let aMovies: IMovie[] = [];
 
   try {
@@ -11,7 +13,15 @@ export async function sendRequest(inputRequest: string) {
     if (response.status === 200) {
       const data = await response.json();
       aMovies = data.movies;
-      const sMovies = JSON.stringify(data.movies);
+
+      console.log ('inputRequest', inputRequest)
+      console.log ('aMovies', aMovies)
+      if (inputRequest.length > 0){
+        aMovies = aMovies.filter((movie) => {return movie && movie.title && movie.title.includes(inputRequest)})
+      }
+
+      const sMovies = JSON.stringify(aMovies);
+
       localStorage.setItem("movies", sMovies);
     } else {
       console.error("Error request. Status:", response.status);

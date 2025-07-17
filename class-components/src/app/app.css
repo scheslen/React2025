@@ -70,7 +70,7 @@ h1 {
 }
 
 .btn {
-  width: 100px;
+  min-width: 120px;
   padding: 10px 20px;
   color: var(--color-btn-txt);
   background-color: var(--color-btn-back);

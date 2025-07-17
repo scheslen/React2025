@@ -6,6 +6,7 @@ import { sendRequest} from "../../app/requests";
 export class Controls extends Component {
   state: IControlState = {
     inputRequest: "",
+    load: false,
   };
 
   componentDidMount(): void {
@@ -15,6 +16,37 @@ export class Controls extends Component {
       this.setState({
         inputRequest: sRequest,
       });
+    }
+  }
+
+  async fetchData(inputRequest: string) {
+
+    // let aMovies: IMovie[] = [];
+
+    this.setState({
+      load: true,
+    });
+
+    // aMovies = 
+    await sendRequest(inputRequest);
+
+    this.setState({
+      load: false,
+    });
+  }
+
+  async handleInput() {
+    const pInput: HTMLInputElement | null =
+      document.querySelector(".search__input");
+    if (pInput) {
+      const sRequest = pInput.value.trim();
+      localStorage.setItem("request", sRequest);
+
+      // this.setState({
+      //   inputRequest: sRequest
+      // });
+
+      await this.fetchData(sRequest);
     }
   }
 
@@ -32,14 +64,5 @@ export class Controls extends Component {
     );
   }
 
-  async handleInput() {
-    const pInput: HTMLInputElement | null =
-      document.querySelector(".search__input");
-    if (pInput) {
-      const sRequest = pInput.value.trim();
-      localStorage.setItem("request", sRequest);
-
-      await sendRequest(sRequest);
-    }
-  }
+  
 }

@@ -12,7 +12,7 @@ export class Home extends Component {
     load: false,
   };
 
-  async fetchData(inputRequest: string) {
+  async fetchData(inputRequest: string ) {
     this.setState({
       load: true,
     });
@@ -25,7 +25,8 @@ export class Home extends Component {
   }
 
   componentDidMount(): void {
-    this.fetchData("");
+    const sRequest: string  =  localStorage.getItem('request') || ''
+    this.fetchData(sRequest);
   }
 
   render() {

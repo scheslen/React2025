@@ -28,5 +28,6 @@ export interface IHomeState {
 }
 
 export interface IControlState {
+  load: boolean;
   inputRequest: string;
 }
