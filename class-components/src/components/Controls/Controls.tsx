@@ -1,12 +1,10 @@
 import "./controls.css";
 import { Component } from "react";
-import { IControlState } from "../../app/types";
-import { sendRequest} from "../../app/requests";
+import { IControlState, ControlProps } from "../../app/types";
 
-export class Controls extends Component {
+export class Controls extends Component <ControlProps> {
   state: IControlState = {
-    inputRequest: "",
-    load: false,
+    inputRequest: this.props.inputRequest,
   };
 
   componentDidMount(): void {
@@ -19,35 +17,14 @@ export class Controls extends Component {
     }
   }
 
-  async fetchData(inputRequest: string) {
-
-    // let aMovies: IMovie[] = [];
-
-    this.setState({
-      load: true,
-    });
-
-    // aMovies = 
-    await sendRequest(inputRequest);
-
-    this.setState({
-      load: false,
-    });
+  async handleInput() {
+    const sRequest: string  =  localStorage.getItem('request') || ''
+    this.setState ({inputRequest: sRequest})
+    this.props.onClick(this.state.inputRequest || '');
   }
 
-  async handleInput() {
-    const pInput: HTMLInputElement | null =
-      document.querySelector(".search__input");
-    if (pInput) {
-      const sRequest = pInput.value.trim();
-      localStorage.setItem("request", sRequest);
-
-      this.setState({
-        inputRequest: sRequest
-      });
-
-      await this.fetchData(sRequest);
-    }
+  changeInput(value: string){
+    localStorage.setItem("request", value);
   }
 
   render() {
@@ -56,6 +33,7 @@ export class Controls extends Component {
         <input
           className="search__input"
           defaultValue={this.state.inputRequest}
+          onChange = {(e) => this.changeInput(e.target.value.trim())}
         ></input>
         <button className="search__btn btn" onClick={() => this.handleInput()}>
           Search

@@ -23,14 +23,22 @@ export interface IpropsMovie {
 }
 
 export interface IHomeState {
+  aMovies: IMovie[];
+  inputRequest: string;
   load: boolean;
   error: boolean;
 }
 
 export interface IControlState {
-  load: boolean;
   inputRequest: string;
 }
+
+export type ControlProps = {
+  inputRequest: string;
+  onClick: (value: string) => void;
+};
+
+
 
 export interface IErrorState {
     error:  boolean;

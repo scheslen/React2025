@@ -9,6 +9,8 @@ import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
 
 export class Home extends Component {
   state: IHomeState = {
+    aMovies: [],
+    inputRequest: '',
     error: false,
     load: false,
   };
@@ -18,23 +20,32 @@ export class Home extends Component {
       load: true,
     });
 
-    await sendRequest(inputRequest);
+    this.state.aMovies = await sendRequest(inputRequest);
 
     this.setState({
       load: false,
     });
   }
 
-  componentDidMount(): void {
+  async componentDidMount() {
     const sRequest: string  =  localStorage.getItem('request') || ''
-    this.fetchData(sRequest);
+    this.setState({inputRequest: sRequest})
+    await this.fetchData(sRequest);
+  }
+
+  async newSearch (){
+    const sRequest: string  =  localStorage.getItem('request') || ''
+    this.setState({
+      inputRequest: sRequest
+    });
+    await this.fetchData(sRequest);
   }
 
   render() {
     return (
       <main className="main">
         <div className="container">
-          <Controls />
+          <Controls  inputRequest={this.state.inputRequest} onClick={() => {this.newSearch()}}/>
           {this.state.load ? <Loader /> : <Results />}
           <ErrorButton />
         </div>

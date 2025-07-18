@@ -1,3 +1,4 @@
+import "./errorBoundary.css";
 import { Component } from "react";
 
 interface Props {
@@ -25,7 +26,7 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
 
     if (this.state.error) {
-      return <div>Something went wrong.</div>;
+      return <div className="boundary__txt">Something went wrong.</div>;
     }
     return this.props.children;
   }
