@@ -38,8 +38,6 @@ export type ControlProps = {
   onClick: (value: string) => void;
 };
 
-
-
 export interface IErrorState {
-    error:  boolean;
-  };
+  error: boolean;
+}

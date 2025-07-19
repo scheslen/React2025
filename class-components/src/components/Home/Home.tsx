@@ -10,12 +10,12 @@ import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
 export class Home extends Component {
   state: IHomeState = {
     aMovies: [],
-    inputRequest: '',
+    inputRequest: "",
     error: false,
     load: false,
   };
 
-  async fetchData(inputRequest: string ) {
+  async fetchData(inputRequest: string) {
     this.setState({
       load: true,
     });
@@ -28,15 +28,15 @@ export class Home extends Component {
   }
 
   async componentDidMount() {
-    const sRequest: string  =  localStorage.getItem('request') || ''
-    this.setState({inputRequest: sRequest})
+    const sRequest: string = localStorage.getItem("request") || "";
+    this.setState({ inputRequest: sRequest });
     await this.fetchData(sRequest);
   }
 
-  async newSearch (){
-    const sRequest: string  =  localStorage.getItem('request') || ''
+  async newSearch() {
+    const sRequest: string = localStorage.getItem("request") || "";
     this.setState({
-      inputRequest: sRequest
+      inputRequest: sRequest,
     });
     await this.fetchData(sRequest);
   }
@@ -45,7 +45,12 @@ export class Home extends Component {
     return (
       <main className="main">
         <div className="container">
-          <Controls  inputRequest={this.state.inputRequest} onClick={() => {this.newSearch()}}/>
+          <Controls
+            inputRequest={this.state.inputRequest}
+            onClick={() => {
+              this.newSearch();
+            }}
+          />
           {this.state.load ? <Loader /> : <Results />}
           <ErrorButton />
         </div>

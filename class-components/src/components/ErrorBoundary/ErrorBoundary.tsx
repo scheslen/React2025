@@ -24,7 +24,6 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
-
     if (this.state.error) {
       return <div className="boundary__txt">Something went wrong.</div>;
     }

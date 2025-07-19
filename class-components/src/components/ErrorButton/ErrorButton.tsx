@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { IErrorState } from "../../app/types";;
+import { Component } from "react";
+import { IErrorState } from "../../app/types";
 
 export class ErrorButton extends Component {
   state: IErrorState = {
@@ -21,7 +21,7 @@ export class ErrorButton extends Component {
   render() {
     return (
       <button className="btn error_btn" onClick={() => this.generateError()}>
-         Error
+        Error
       </button>
     );
   }

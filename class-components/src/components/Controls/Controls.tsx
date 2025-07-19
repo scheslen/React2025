@@ -2,7 +2,7 @@ import "./controls.css";
 import { Component } from "react";
 import { IControlState, ControlProps } from "../../app/types";
 
-export class Controls extends Component <ControlProps> {
+export class Controls extends Component<ControlProps> {
   state: IControlState = {
     inputRequest: this.props.inputRequest,
   };
@@ -18,12 +18,12 @@ export class Controls extends Component <ControlProps> {
   }
 
   async handleInput() {
-    const sRequest: string  =  localStorage.getItem('request') || ''
-    this.setState ({inputRequest: sRequest})
-    this.props.onClick(this.state.inputRequest || '');
+    const sRequest: string = localStorage.getItem("request") || "";
+    this.setState({ inputRequest: sRequest });
+    this.props.onClick(this.state.inputRequest || "");
   }
 
-  changeInput(value: string){
+  changeInput(value: string) {
     localStorage.setItem("request", value);
   }
 
@@ -33,7 +33,7 @@ export class Controls extends Component <ControlProps> {
         <input
           className="search__input"
           defaultValue={this.state.inputRequest}
-          onChange = {(e) => this.changeInput(e.target.value.trim())}
+          onChange={(e) => this.changeInput(e.target.value.trim())}
         ></input>
         <button className="search__btn btn" onClick={() => this.handleInput()}>
           Search
