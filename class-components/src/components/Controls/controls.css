@@ -1,0 +1,14 @@
+.controls {
+  width: 80%;
+  min-height: 100px;
+  border: 1px solid var(--color-txt);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.search__input {
+  font-size: 1rem;
+  padding: 10px;
+}
