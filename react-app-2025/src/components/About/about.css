@@ -1,0 +1,94 @@
+.about-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  /* padding: 40px 0; */
+}
+
+/* .team-cards-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+} */
+
+
+.autor {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  padding: 24px;
+  width: 50%;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 4px 4px 8px #e7e7e7;
+  transition: box-shadow 0.5s ease;
+}
+
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.icon {
+  width: 50px;
+}
+
+
+.description {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.name {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.description {
+  min-height: 120px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.github-link {
+  background-color: inherit;
+  color: var(--color-footer-back);
+  position: relative;
+  text-decoration: none;
+}
+
+.github-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-footer-back);
+  transition: width 0.5s;
+}
+
+.github-link:hover::after {
+  width: 100%;
+}
+
+.github-link:hover {
+  background-color: transparent;
+}
+
+.rss-logo {
+  margin-bottom: 20%;
+  width: 120px;
+  height: 40px;
+}
+

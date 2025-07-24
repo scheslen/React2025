@@ -6,7 +6,7 @@ export class Header extends Component {
     return (
       <header className="header">
         <div className="container">
-          <h1>Star Trek Movies</h1>
+          <h1>Star Trek</h1>
         </div>
       </header>
     );
