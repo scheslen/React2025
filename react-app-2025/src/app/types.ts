@@ -41,3 +41,8 @@ export type ControlProps = {
 export interface IErrorState {
   error: boolean;
 }
+
+export type MenuProps = {
+  textColor?: string; 
+  onClick?: (menuVisible: boolean) => void;
+};
