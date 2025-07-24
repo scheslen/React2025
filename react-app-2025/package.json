@@ -1,5 +1,5 @@
 {
-  "name": "class-components",
+  "name": "react-app-2025",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "cd ..  &&  husky class-components/.husky",
+    "prepare": "cd ..  &&  husky react-app-2025/.husky",
     "precommit": "npm run lint && npm test "
   },
   "husky": {
