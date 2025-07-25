@@ -1,9 +1,8 @@
 import "./header.css";
-import { Component } from "react";
+// import { Component } from "react";
 import {Menu} from "../Menu/Menu"
 
-export class Header extends Component {
-  render() {
+export const Header = ()=> {
     return (
       <header className="header">
         <div className="container">
@@ -13,4 +12,4 @@ export class Header extends Component {
       </header>
     );
   }
-}
+

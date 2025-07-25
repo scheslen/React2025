@@ -5,8 +5,7 @@ const author = {
   description:
     "Graduated from Belarusian State University. Passionate about learning and web design, with additional studies in Web Design and Computer Graphics.",
   github: "https://github.com/scheslen",
-  avatar: "avatar.jpg",
-};
+}
 
 export const About = () => {
   return (
@@ -18,7 +17,7 @@ export const About = () => {
       </div>
       <div className="logo">
         <a href="https://rs.school/" target="_blank" rel="noopener noreferrer">
-          <img src="logoRss.svg" alt="RSS Logo" className="rss-logo" />
+          <img  className="rss-logo" src="logoRss.svg" alt="RSS Logo" />
         </a>
       </div>
 

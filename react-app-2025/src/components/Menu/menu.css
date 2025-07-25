@@ -22,31 +22,6 @@
   opacity: 1;
 }
 
-/* .menu__item a:active {
-  opacity: 1;
-  text-decoration: underline;
-} */
-
-/* .menu__item a:active::after {
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: #403f3d;
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  transition: all 0.5s;
-  transform: scaleX(0);
-} */
-
-
-
-
-/* 
-.active a {
-  opacity: 1;
-  text-decoration: underline;
-} */
 .menu__link {
   opacity: 0.5;
   transition: opacity 0.3s;
@@ -56,15 +31,3 @@
   opacity: 1;
   text-decoration: underline;
 }
-/* .open {
-  left: 0;
-}
-.menu .open {
-  transition:
-    transform 5s ease-in-out,
-    opacity 2s ease-in-out;
-} */
-/* .menu:not(.open) {
-  transform: translateX(-100%);
-  opacity: 0;
-} */
