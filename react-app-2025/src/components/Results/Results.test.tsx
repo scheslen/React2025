@@ -5,7 +5,7 @@ import { ICharacter } from "../../app/types";
 
 describe("Card Component", () => {
   it("renders a Card", () => {
-    const testItem : ICharacter= {
+    const testItem: ICharacter = {
       alternateReality: false,
       bloodType: null,
       dayOfBirth: null,

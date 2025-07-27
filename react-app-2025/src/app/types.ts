@@ -68,12 +68,12 @@ export interface IpropsCharacter {
   item: ICharacter;
 }
 
-export interface IHomeState {
-  aMovies: IMovie[];
-  inputRequest: string;
-  load: boolean;
-  error: boolean;
-}
+// export interface IHomeState {
+//   aMovies: IMovie[];
+//   inputRequest: string;
+//   load: boolean;
+//   error: boolean;
+// }
 
 export interface IControlState {
   inputRequest: string;
@@ -81,6 +81,11 @@ export interface IControlState {
 
 export type ControlProps = {
   inputRequest: string;
+  onClick: (value: string) => void;
+};
+
+export type PageProps = {
+  pageNumber: number;
   onClick: (value: string) => void;
 };
 

@@ -20,7 +20,7 @@ export class ErrorButton extends Component {
 
   render() {
     return (
-      <button className="btn error_btn" onClick={() => this.generateError()}>
+      <button className="btn error__btn" onClick={() => this.generateError()}>
         Error
       </button>
     );

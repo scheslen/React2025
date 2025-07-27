@@ -35,7 +35,7 @@ export const Card = ({ item }: IpropsCharacter) => {
   let description = "";
   description += item.uid;
 
-   console.log (item)
+  //console.log(item);
   // description += ` ${this.props.movie.mainDirector.name}`;
   // description += ` ( years from ${this.props.movie.yearFrom} to ${this.props.movie.yearTo} ) `;
 

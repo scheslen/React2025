@@ -5,21 +5,27 @@ import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
 import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
-import {Page} from '../Page/Page.tsx';
+import { Page } from "../Page/page.tsx";
 
 export const Home = () => {
   const [load, setLoad] = useState(false);
   const [inputRequest, setInputRequest] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
-  async function fetchData(inputRequest: string) {
+  async function fetchData() {
     setLoad(true);
-    setInputRequest(inputRequest);
-    await sendRequest(inputRequest);
+    await sendRequest(inputRequest, pageNumber);
     setLoad(false);
   }
 
-  async function newSearch() {
-    await fetchData(inputRequest);
+  async function newSearchInput() {
+    setInputRequest(inputRequest);
+    await fetchData();
+  }
+
+ async function newSearchPage() {
+    setPageNumber(pageNumber);
+    await fetchData();
   }
 
   return (
@@ -28,11 +34,13 @@ export const Home = () => {
         <Controls
           inputRequest={inputRequest}
           onClick={() => {
-            newSearch();
+            newSearchInput();
           }}
         />
         {load ? <Loader /> : <Results />}
-        <Page />
+        <Page pageNumber={pageNumber}  onClick={() => {
+            newSearchPage();
+          }}/>
         <ErrorButton />
       </div>
     </main>
