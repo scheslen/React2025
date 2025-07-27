@@ -8,10 +8,12 @@ export const Page = (props: PageProps) => {
 
   function prevPage() {
     setNumber(number === 0 ? 0 : number - 1);
+    localStorage.setItem('page',number.toString());
   }
 
   function nextPage() {
     setNumber(number === maxNumber ? maxNumber : number + 1);
+    localStorage.setItem('page', number.toString());
   }
 
   return (

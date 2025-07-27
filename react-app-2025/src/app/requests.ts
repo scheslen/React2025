@@ -1,18 +1,12 @@
 import { ICharacter, IPage } from "./types";
 
 export async function sendRequest(inputRequest: string, pageNumber: number) {
-  console.log(pageNumber);
-  //const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
+
   const urlAPI = `https://stapi.co/api/v1/rest/character/`;
   const request = "search";
 
-  // const pageNumber = 0;
-  // const pageSize = 10;
-
   let aItems: ICharacter[] = [];
   let page: IPage;
-
-  // const pN=5
 
   try {
     const response = await fetch(
@@ -23,8 +17,8 @@ export async function sendRequest(inputRequest: string, pageNumber: number) {
     if (response.status === 200) {
       const data = await response.json();
 
-      console.log("data", data);
-      aItems = data.characters; //data.movies;
+     // console.log("data", data);
+      aItems = data.characters;
       page = data.page;
       console.log(page);
 

@@ -1,44 +1,31 @@
 import "./controls.css";
-import { Component } from "react";
-import { IControlState, ControlProps } from "../../app/types";
+import { ControlProps } from "../../app/types";
+import { useState } from "react";
 
-export class Controls extends Component<ControlProps> {
-  state: IControlState = {
-    inputRequest: this.props.inputRequest,
-  };
+export const Controls = (props:ControlProps) => {
+  const [inputRequest, setInputRequest] = useState (props.inputRequest)
 
-  componentDidMount(): void {
-    let sRequest: string | null = "";
-    sRequest = localStorage.getItem("request");
-    if (sRequest) {
-      this.setState({
-        inputRequest: sRequest,
-      });
-    }
-  }
-
-  async handleInput() {
+  async function handleInput() {
     const sRequest: string = localStorage.getItem("request") || "";
-    this.setState({ inputRequest: sRequest });
-    this.props.onClick(this.state.inputRequest || "");
+    setInputRequest(sRequest)
+    props.onClick(inputRequest);
   }
 
-  changeInput(value: string) {
+   function changeInput(value: string) {
     localStorage.setItem("request", value);
   }
 
-  render() {
-    return (
+  return (
       <div className="controls">
         <input
           className="search__input"
-          defaultValue={this.state.inputRequest}
-          onChange={(e) => this.changeInput(e.target.value.trim())}
+          defaultValue={inputRequest}
+          onChange={(e) => changeInput(e.target.value.trim())}
         ></input>
-        <button className="search__btn btn" onClick={() => this.handleInput()}>
+        <button className="search__btn btn" onClick={() => handleInput()}>
           Search
         </button>
       </div>
     );
   }
-}
+

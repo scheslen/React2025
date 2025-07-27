@@ -4,6 +4,10 @@ export const useLSRequest = () => {
   return localStorage.getItem("request") || "";
 };
 
+export const useLSPage = () => {
+  return Number(localStorage.getItem("page") || "0");
+};
+
 export const useInput = (initValue: string) => {
   const [value, setValue] = useState(initValue)
 

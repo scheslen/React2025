@@ -35,10 +35,6 @@ export const Card = ({ item }: IpropsCharacter) => {
   let description = "";
   description += item.uid;
 
-  //console.log(item);
-  // description += ` ${this.props.movie.mainDirector.name}`;
-  // description += ` ( years from ${this.props.movie.yearFrom} to ${this.props.movie.yearTo} ) `;
-
   return (
     <div className="results__item">
       <div className="results__item-name">{item.name}</div>
