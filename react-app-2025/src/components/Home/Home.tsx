@@ -5,14 +5,14 @@ import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
 import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
+import {Page} from '../Page/Page.tsx';
 
 export const Home = () => {
-
-  const [load, setLoad] = useState(false)
-  const [inputRequest , setInputRequest] = useState ('')
+  const [load, setLoad] = useState(false);
+  const [inputRequest, setInputRequest] = useState("");
 
   async function fetchData(inputRequest: string) {
-    setLoad(true) ;
+    setLoad(true);
     setInputRequest(inputRequest);
     await sendRequest(inputRequest);
     setLoad(false);
@@ -23,17 +23,18 @@ export const Home = () => {
   }
 
   return (
-      <main className="main">
-        <div className="container">
-          <Controls
-            inputRequest={inputRequest}
-            onClick={() => {
-             newSearch();
-            }}
-          />
-          {load ? <Loader /> : <Results />}
-          <ErrorButton />
-        </div>
-      </main>
-    );
- }
+    <main className="main">
+      <div className="container">
+        <Controls
+          inputRequest={inputRequest}
+          onClick={() => {
+            newSearch();
+          }}
+        />
+        {load ? <Loader /> : <Results />}
+        <Page />
+        <ErrorButton />
+      </div>
+    </main>
+  );
+};

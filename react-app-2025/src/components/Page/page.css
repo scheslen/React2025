@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  align-items: center;
+  /* gap: 20px; */
+
+  font-size: 1rem;
+  margin: 20px;
+}
+.page__number{
+    margin: 0 25px 0 10px; 
+}
+.page__btn {
+   min-width: 70px;
+   margin: 0 5px;
+}

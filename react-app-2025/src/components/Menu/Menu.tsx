@@ -18,7 +18,7 @@ export const Menu = ({ onClick }: MenuProps) => {
   };
 
   return (
-    <ul className='nav'>
+    <ul className="nav">
       <li className="menu__item">
         <NavLink
           to="/"

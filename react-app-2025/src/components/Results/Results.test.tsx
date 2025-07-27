@@ -1,32 +1,37 @@
 import { render, screen } from "@testing-library/react";
-import { MovieCard } from "./Results";
+import { Card } from "./Results";
 import { describe, it, expect } from "vitest";
+import { ICharacter } from "../../app/types";
 
-describe("MovieCard Component", () => {
-  it("renders a MovieCard", () => {
-    const testMovie = {
-      uid: "MOMA0000173722",
-      title: "Star Trek",
-      mainDirector: { uid: "", name: "Nicholas Meyer" },
-      stardateFrom: 8130.3,
-      stardateTo: 8130.3,
-      titleBulgarian: "",
-      titleCatalan: "",
-      titleChineseTraditional: "",
-      titleGerman: "",
-      titleItalian: "",
-      titleJapanese: "",
-      titlePolish: "",
-      titleRussian: "",
-      titleSerbian: "",
-      titleSpanish: "",
-      usReleaseDate: "1982-06-04",
-      yearFrom: 2100,
-      yearTo: 2200,
+describe("Card Component", () => {
+  it("renders a Card", () => {
+    const testItem : ICharacter= {
+      alternateReality: false,
+      bloodType: null,
+      dayOfBirth: null,
+      dayOfDeath: null,
+      deceased: null,
+      fictionalCharacter: false,
+      gender: null,
+      height: null,
+      hologram: false,
+      hologramActivationDate: null,
+      hologramDateStatus: null,
+      hologramStatus: null,
+      maritalStatus: null,
+      mirror: false,
+      monthOfBirth: null,
+      monthOfDeath: null,
+      name: "A. Cooper",
+      placeOfBirth: null,
+      placeOfDeath: null,
+      serialNumber: null,
+      uid: "CHMA0000280373",
+      weight: null,
+      yearOfBirth: null,
+      yearOfDeath: null,
     };
-    render(<MovieCard movie={testMovie} />);
-    expect(
-      screen.getByText("1982-06-04 Nicholas Meyer ( years from 2100 to 2200 )"),
-    ).toBeInTheDocument();
+    render(<Card item={testItem} />);
+    expect(screen.getByText("A. Cooper")).toBeInTheDocument();
   });
 });

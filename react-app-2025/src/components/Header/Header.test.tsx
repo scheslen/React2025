@@ -8,7 +8,7 @@ describe("Header Component", () => {
     render(
       <BrowserRouter>
         <Header />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     expect(screen.getByText("Star Trek")).toBeInTheDocument();
   });

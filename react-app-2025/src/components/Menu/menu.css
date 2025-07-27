@@ -9,7 +9,7 @@
 .menu__item {
   text-transform: capitalize;
   font-size: 1.4rem;
-   transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .menu__item a {

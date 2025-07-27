@@ -12,5 +12,5 @@ describe("About Component", () => {
     render(<About />);
     const logoRSS = document.querySelector(".rss-logo");
     expect(logoRSS).toBeInTheDocument();
-   });
+  });
 });

@@ -1,3 +1,3 @@
-export  const useLSRequest = () =>{
-return  localStorage.getItem("request") || ""
-}
+export const useLSRequest = () => {
+  return localStorage.getItem("request") || "";
+};

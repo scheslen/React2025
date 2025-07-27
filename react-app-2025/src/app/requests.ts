@@ -1,10 +1,9 @@
-import {ICharacter, IPage } from "./types";
+import { ICharacter, IPage } from "./types";
 
 export async function sendRequest(inputRequest: string) {
   //const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
   const urlAPI = `https://stapi.co/api/v1/rest/character/`;
   const request = "search";
-
 
   // const pageNumber = 0;
   // const pageSize = 10;
@@ -18,14 +17,18 @@ export async function sendRequest(inputRequest: string) {
     if (response.status === 200) {
       const data = await response.json();
 
-      console.log ('data', data)
-      aItems = data.characters //data.movies;
+      console.log("data", data);
+      aItems = data.characters; //data.movies;
       page = data.page;
-      console.log (page)
+      console.log(page);
 
       if (inputRequest.length > 0) {
         aItems = aItems.filter((item) => {
-          return item && item.name && item.name.toLowerCase().includes(inputRequest.toLowerCase());
+          return (
+            item &&
+            item.name &&
+            item.name.toLowerCase().includes(inputRequest.toLowerCase())
+          );
         });
       }
 
