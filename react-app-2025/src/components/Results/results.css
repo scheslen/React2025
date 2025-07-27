@@ -17,6 +17,11 @@
   padding: 0 20px;
 }
 
+.results__item:hover{
+  background-color: var(--color-btn-back);
+  cursor: pointer;
+}
+
 .results__item-name {
   width: 35%;
   text-align: left;

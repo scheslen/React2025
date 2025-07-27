@@ -1,5 +1,4 @@
 import "./header.css";
-// import { Component } from "react";
 import {Menu} from "../Menu/Menu"
 
 export const Header = ()=> {

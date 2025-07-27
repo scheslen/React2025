@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MenuProps } from "../../app/types";
 import "./menu.css";
 
-export const Menu = ({ textColor,  onClick }: MenuProps) => {
+export const Menu = ({ onClick }: MenuProps) => {
   const navigate = useNavigate();
 
   const handleLinkClick = (e: React.MouseEvent, url: string) => {
@@ -10,7 +10,7 @@ export const Menu = ({ textColor,  onClick }: MenuProps) => {
 
     e.preventDefault();
 
-    if (onClick) onClick(false);
+    if (onClick) onClick();
 
     setTimeout(() => {
       navigate(url);
@@ -22,7 +22,6 @@ export const Menu = ({ textColor,  onClick }: MenuProps) => {
       <li className="menu__item">
         <NavLink
           to="/"
-          style={{ color: textColor }}
           className={({ isActive }) =>
             isActive ? "menu__link active" : "menu__link"
           }
@@ -35,7 +34,6 @@ export const Menu = ({ textColor,  onClick }: MenuProps) => {
       <li className="menu__item">
         <NavLink
           to="/about"
-          style={{ color: textColor }}
           className={({ isActive }) =>
             isActive ? "menu__link active" : "menu__link"
           }

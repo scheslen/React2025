@@ -1,60 +1,39 @@
 import "./home.css";
-import { Component } from "react";
+import { useState } from "react";
 import { Controls } from "../Controls/Controls.tsx";
 import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
-import { IHomeState } from "../../app/types";
 import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
 
-export class Home extends Component {
-  state: IHomeState = {
-    aMovies: [],
-    inputRequest: "",
-    error: false,
-    load: false,
-  };
+export const Home = () => {
 
-  async fetchData(inputRequest: string) {
-    this.setState({
-      load: true,
-    });
+  const [load, setLoad] = useState(false)
+  const [inputRequest , setInputRequest] = useState ('')
 
-    this.state.aMovies = await sendRequest(inputRequest);
-
-    this.setState({
-      load: false,
-    });
+  async function fetchData(inputRequest: string) {
+    setLoad(true) ;
+    setInputRequest(inputRequest);
+    await sendRequest(inputRequest);
+    setLoad(false);
   }
 
-  async componentDidMount() {
-    const sRequest: string = localStorage.getItem("request") || "";
-    this.setState({ inputRequest: sRequest });
-    await this.fetchData(sRequest);
+  async function newSearch() {
+    await fetchData(inputRequest);
   }
 
-  async newSearch() {
-    const sRequest: string = localStorage.getItem("request") || "";
-    this.setState({
-      inputRequest: sRequest,
-    });
-    await this.fetchData(sRequest);
-  }
-
-  render() {
-    return (
+  return (
       <main className="main">
         <div className="container">
           <Controls
-            inputRequest={this.state.inputRequest}
+            inputRequest={inputRequest}
             onClick={() => {
-              this.newSearch();
+             newSearch();
             }}
           />
-          {this.state.load ? <Loader /> : <Results />}
+          {load ? <Loader /> : <Results />}
           <ErrorButton />
         </div>
       </main>
     );
-  }
-}
+ }

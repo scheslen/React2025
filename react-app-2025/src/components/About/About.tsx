@@ -16,7 +16,7 @@ export const About = () => {
         </p>
       </div>
       <div className="logo">
-        <a href="https://rs.school/" target="_blank" rel="noopener noreferrer">
+        <a href="https://rs.school/courses/reactjs" target="_blank" rel="noopener noreferrer">
           <img  className="rss-logo" src="logoRss.svg" alt="RSS Logo" />
         </a>
       </div>

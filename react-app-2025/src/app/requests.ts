@@ -1,25 +1,35 @@
-import { IMovie } from "./types";
+import {ICharacter, IPage } from "./types";
 
 export async function sendRequest(inputRequest: string) {
-  const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
+  //const urlAPI = `https://stapi.co/api/v1/rest/movie/`;
+  const urlAPI = `https://stapi.co/api/v1/rest/character/`;
   const request = "search";
 
-  let aMovies: IMovie[] = [];
+
+  // const pageNumber = 0;
+  // const pageSize = 10;
+
+  let aItems: ICharacter[] = [];
+  let page: IPage;
 
   try {
     const response = await fetch(`${urlAPI}${request}`, { method: "GET" });
 
     if (response.status === 200) {
       const data = await response.json();
-      aMovies = data.movies;
+
+      console.log ('data', data)
+      aItems = data.characters //data.movies;
+      page = data.page;
+      console.log (page)
 
       if (inputRequest.length > 0) {
-        aMovies = aMovies.filter((movie) => {
-          return movie && movie.title && movie.title.includes(inputRequest);
+        aItems = aItems.filter((item) => {
+          return item && item.name && item.name.toLowerCase().includes(inputRequest.toLowerCase());
         });
       }
 
-      const sMovies = JSON.stringify(aMovies);
+      const sMovies = JSON.stringify(aItems);
 
       localStorage.setItem("movies", sMovies);
     } else {
@@ -29,5 +39,5 @@ export async function sendRequest(inputRequest: string) {
   } catch (error) {
     console.error("Error loading data:", error);
   }
-  return aMovies;
+  return aItems;
 }
