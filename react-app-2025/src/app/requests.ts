@@ -1,7 +1,6 @@
 import { ICharacter, IPage } from "./types";
 
 export async function sendRequest(inputRequest: string, pageNumber: number) {
-
   const urlAPI = `https://stapi.co/api/v1/rest/character/`;
   const request = "search";
 
@@ -17,7 +16,7 @@ export async function sendRequest(inputRequest: string, pageNumber: number) {
     if (response.status === 200) {
       const data = await response.json();
 
-     // console.log("data", data);
+      // console.log("data", data);
       aItems = data.characters;
       page = data.page;
       console.log(page);

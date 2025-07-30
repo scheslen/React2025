@@ -8,19 +8,19 @@ export const Page = (props: PageProps) => {
 
   function prevPage() {
     setNumber(number === 0 ? 0 : number - 1);
-    localStorage.setItem('page',number.toString());
+    localStorage.setItem("page", number.toString());
   }
 
   function nextPage() {
     setNumber(number === maxNumber ? maxNumber : number + 1);
-    localStorage.setItem('page', number.toString());
+    localStorage.setItem("page", number.toString());
   }
 
   return (
     <div className="page">
-      <p className="page__txt">Page:
-      <span className="page__number">{number}</span>
-      /{maxNumber}
+      <p className="page__txt">
+        Page:
+        <span className="page__number">{number}</span>/{maxNumber}
       </p>
       <button className="btn page__btn" onClick={prevPage}>
         prev
