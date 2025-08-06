@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 20px;
+}
+
+.menu__item {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  transition: all 0.5s ease-in;
+}
+
+.menu__item a {
+  color: var(--color-title);
+  opacity: 0.5;
+  transition: opacity ease-in-out 0.5s;
+}
+.menu__item a:hover,
+.menu__item a:active {
+  opacity: 1;
+}
+
+.menu__link {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.menu__link.active {
+  opacity: 1;
+  text-decoration: underline;
+}

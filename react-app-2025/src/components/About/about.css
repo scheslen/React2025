@@ -1,0 +1,45 @@
+.about-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.about-txt {
+  width: 50%;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+.author {
+  color: var(--color-txt-grey);
+  padding: 24px;
+  width: 50%;
+  text-align: center;
+}
+
+.git-icon {
+  width: 50px;
+}
+
+.name {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.description {
+  margin: 30px 0;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.rss-logo {
+  margin-bottom: 20%;
+  width: 120px;
+  height: 40px;
+}

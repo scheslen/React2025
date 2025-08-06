@@ -1,0 +1,28 @@
+.results {
+  width: 80%;
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid var(--color-txt);
+}
+
+.results__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.results__item {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.results__item:hover {
+  background-color: var(--color-btn-back);
+  cursor: pointer;
+}
+
+.results__item-name {
+  width: 35%;
+  text-align: left;
+}
