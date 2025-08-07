@@ -22,14 +22,12 @@ export const Home = () => {
   async function newSearchInput() {
     const iRequest = localStorage.getItem("request") || "";
     const pNumber = localStorage.getItem("page") || 0;
-    console.log('Input>>>>', iRequest, pNumber)
     await fetchData(iRequest, Number(pNumber));
     setInputRequest(iRequest);
   }
 
   async function newSearchPage() {
     const pNumber = localStorage.getItem("page") || 0;
-    console.log('Page  - pNumber>>>', pNumber)
     await fetchData(inputRequest, Number(pNumber));
     setPageNumber(Number(pNumber));
   }
@@ -44,9 +42,7 @@ export const Home = () => {
           }}
         />
 
-        <div className="results">
-        {load ? <Loader /> : <Results />}
-        </div>
+        <div className="results">{load ? <Loader /> : <Results />}</div>
         <Page
           pageNumber={pageNumber}
           onClick={() => {

@@ -2,12 +2,8 @@ import { ICharacter, IPage } from "./types";
 
 export async function sendRequest(inputRequest: string, pageNumber: number) {
 
-  console.log('inputRequest <<<<', inputRequest)
-  console.log('pageNumber <<<<', pageNumber)
-
   const urlAPI = `https://stapi.co/api/v1/rest/character/`;
   const request = "search";
-
 
   let aItems: ICharacter[] = [];
   let page: IPage;
