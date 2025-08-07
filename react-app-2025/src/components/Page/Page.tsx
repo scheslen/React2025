@@ -6,14 +6,26 @@ export const Page = (props: PageProps) => {
   const [number, setNumber] = useState(props.pageNumber);
   const maxNumber = 25;
 
-  function prevPage() {
+
+  // async function handleChange() {
+  //   const sPage: string = localStorage.getItem("page") || "";
+  //   setNumber(Number(sPage));
+  //   props.onClick(Number(sPage));
+  // }
+
+
+  async function prevPage() {
     setNumber(number === 0 ? 0 : number - 1);
-    localStorage.setItem("page", number.toString());
+    await localStorage.setItem("page", number.toString());
+    console.log('prev-number ::::', number)
+    props.onClick(number);
   }
 
-  function nextPage() {
+  async function nextPage() {
     setNumber(number === maxNumber ? maxNumber : number + 1);
-    localStorage.setItem("page", number.toString());
+    await localStorage.setItem("page", number.toString());
+    console.log('next-number ::::', number)
+    props.onClick(number);
   }
 
   return (

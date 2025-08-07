@@ -14,7 +14,7 @@ export const Results = () => {
   }
 
   return (
-    <div className="results">
+    <div>
       {Number(status) === 200 ? (
         <div className="results__list">
           {aCharacters.map((item: ICharacter) => (

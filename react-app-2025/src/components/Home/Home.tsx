@@ -5,7 +5,7 @@ import { Results } from "../Results/Results.tsx";
 import { Loader } from "../Loader/Loader.tsx";
 import { sendRequest } from "../../app/requests";
 import { ErrorButton } from "../ErrorButton/ErrorButton.tsx";
-import { Page } from "../Page/page.tsx";
+import { Page } from "../Page/Page.tsx";
 import { useLSRequest, useLSPage } from "../../app/hooks.tsx";
 
 export const Home = () => {
@@ -21,12 +21,15 @@ export const Home = () => {
 
   async function newSearchInput() {
     const iRequest = localStorage.getItem("request") || "";
-    await fetchData(iRequest, pageNumber);
+    const pNumber = localStorage.getItem("page") || 0;
+    console.log('Input>>>>', iRequest, pNumber)
+    await fetchData(iRequest, Number(pNumber));
     setInputRequest(iRequest);
   }
 
   async function newSearchPage() {
     const pNumber = localStorage.getItem("page") || 0;
+    console.log('Page  - pNumber>>>', pNumber)
     await fetchData(inputRequest, Number(pNumber));
     setPageNumber(Number(pNumber));
   }
@@ -40,7 +43,10 @@ export const Home = () => {
             newSearchInput();
           }}
         />
+
+        <div className="results">
         {load ? <Loader /> : <Results />}
+        </div>
         <Page
           pageNumber={pageNumber}
           onClick={() => {

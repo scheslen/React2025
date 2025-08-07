@@ -86,7 +86,7 @@ export type ControlProps = {
 
 export type PageProps = {
   pageNumber: number;
-  onClick: (value: string) => void;
+  onClick: (value: number) => void;
 };
 
 export interface IErrorState {
