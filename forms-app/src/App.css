@@ -1,42 +1,90 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --color-back: linear-gradient(#79d4ea, #2d7354);
+  --color-txt: #ffffff;
+  --color-title: #d89b3d;
+
+  --color-btn-txt: #ffffff;
+  --color-btn-back: #0e6866;
+  --color-btn-back-hover: #1fa7a4;
+
+  --color-border: #d9d9d9;
+  --color-txt-alt: #075826;
+  --color-txt-mess: #10d7d2;
+  --color-txt-err: #b95555;
+  --color-txt-grey: #555555;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-txt);
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
   text-align: center;
+  background: var(--color-back);
+  color: var(--color-txt);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.container {
+  max-width: 1440px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-size: 2.3rem;
+  line-height: 150%;
+  letter-spacing: 0.18rem;
+  color: var(--color-title);
+  text-transform: capitalize;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.btn {
+  min-width: 120px;
+  padding: 10px 20px;
+  color: var(--color-btn-txt);
+  background-color: var(--color-btn-back);
+  border: 1px solid var(--color-btn-back);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.5s ease-in;
 }
 
-.card {
-  padding: 2em;
+.btn:hover {
+  background-color: var(--color-btn-back-hover);
 }
 
-.read-the-docs {
-  color: #888;
+.message {
+  margin: 30px 0;
+  color: var(--color-txt);
 }
