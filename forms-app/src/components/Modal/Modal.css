@@ -1,14 +1,14 @@
-.modal-back{
+.modal-back {
   position: fixed;
   top: 0;
   right: 0;
-  bottom:0;
-  left:0;
+  bottom: 0;
+  left: 0;
   background-color: var(--color-modal);
   opacity: 0.5;
 }
 
-.modal-window{
+.modal-window {
   position: absolute;
   top: 200px;
   left: 375px;
