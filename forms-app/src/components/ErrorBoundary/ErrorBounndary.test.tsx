@@ -19,8 +19,7 @@ describe('ErrorBoundary Component', () => {
   });
 
   it('enders content with error', () => {
-    // const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
+   
     render(
       <ErrorBoundary>
         <ErrorComponent />

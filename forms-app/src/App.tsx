@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Modal } from './components/Modal/Modal.tsx';
 import { Form } from './components/Form/Form.tsx';
 
-function App() {
+export function App() {
   const [modalVisible, setModalVisible] = useState(true);
 
   const clickHandler = () => {
