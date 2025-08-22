@@ -19,7 +19,7 @@ describe('ErrorBoundary Component', () => {
   });
 
   it('enders content with error', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    // const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     render(
       <ErrorBoundary>
@@ -29,6 +29,6 @@ describe('ErrorBoundary Component', () => {
 
     expect(screen.getByText('Something went wrong.')).toBeInTheDocument();
 
-    errorSpy.mockRestore();
+    // errorSpy.mockRestore();
   });
 });

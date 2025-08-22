@@ -1,7 +1,9 @@
 :root {
-  --color-back: linear-gradient(#79d4ea, #2d7354);
+  /* --color-back: linear-gradient(#79d4ea, #2d7354); */
+  --color-back: #ffffff;
   --color-txt: #ffffff;
-  --color-title: #d89b3d;
+  /* --color-title: #d89b3d;   #c49040*/
+  --color-title: #B23850;
 
   --color-btn-txt: #ffffff;
   --color-btn-back: #0e6866;
@@ -13,8 +15,8 @@
   --color-txt-err: #b95555;
   --color-txt-grey: #555555;
 
-  --color-modal: #000000;
-  --color-modal-back: #6bc6dd;
+  --color-modal: #116466;
+  --color-modal-back: #75bab6;
 }
 
 * {
@@ -70,6 +72,10 @@ h1 {
   letter-spacing: 0.18rem;
   color: var(--color-title);
   text-transform: capitalize;
+}
+
+h2 {
+  color: #dccfa1;
 }
 
 .btn {

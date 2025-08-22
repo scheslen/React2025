@@ -5,16 +5,18 @@
   bottom: 0;
   left: 0;
   background-color: var(--color-modal);
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .modal-window {
   position: absolute;
   top: 200px;
-  left: 375px;
+  left: 50%;
+  transform: translatex(-50%);
   width: 500px;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--color-modal-back);
   border-radius: 10px;
+  z-index: 10;
 }

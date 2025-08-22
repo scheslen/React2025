@@ -24,12 +24,12 @@ function App() {
 
       {modalVisible && (
         <Modal
-          title="New form"
+          title="Form"
           onClose={() => {
             setModalVisible(false);
           }}
         >
-          <Form />
+          <Form onSubmit = {()=> setModalVisible(false)} />
         </Modal>
       )}
     </>
