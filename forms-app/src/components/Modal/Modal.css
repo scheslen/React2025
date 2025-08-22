@@ -1,0 +1,20 @@
+.modal-back{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom:0;
+  left:0;
+  background-color: var(--color-modal);
+  opacity: 0.5;
+}
+
+.modal-window{
+  position: absolute;
+  top: 200px;
+  left: 375px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--color-modal-back);
+  border-radius: 10px;
+}

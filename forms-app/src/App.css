@@ -12,6 +12,9 @@
   --color-txt-mess: #10d7d2;
   --color-txt-err: #b95555;
   --color-txt-grey: #555555;
+
+  --color-modal: #000000;
+  --color-modal-back: #6bc6dd;
 }
 
 * {
@@ -87,4 +90,14 @@ h1 {
 .message {
   margin: 30px 0;
   color: var(--color-txt);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.controls-btn{
+  min-width: 200px;
+  margin: 20px;
 }
