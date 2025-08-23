@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Forms.css';
+import './Form.css';
 
 interface IFormProps {
   onSubmit: () => void;
