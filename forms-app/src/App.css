@@ -98,6 +98,12 @@ input::placeholder {
   color: var(--color-txt-lightgrey);
 }
 
+input:focus{
+  border-color: var(--color-txt-focus);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
 input:focus::placeholder {
   color: var(--color-txt-focus);
 }
