@@ -19,7 +19,6 @@ describe('ErrorBoundary Component', () => {
   });
 
   it('enders content with error', () => {
-   
     render(
       <ErrorBoundary>
         <ErrorComponent />

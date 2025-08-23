@@ -11,11 +11,10 @@
     "format:fix": "prettier --write .",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "prepare": "cd ..  &&  husky forms-app-/.husky",
+    "prepare": "cd ..  &&  husky forms-app/.husky",
     "precommit": "npm run lint && npm test "
   },
-
-   "husky": {
+  "husky": {
     "hooks": {
       "pre-commit": "npm run precommit"
     }

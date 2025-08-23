@@ -3,7 +3,7 @@
   --color-back: #ffffff;
   --color-txt: #ffffff;
   /* --color-title: #d89b3d;   #c49040*/
-  --color-title: #B23850;
+  --color-title: #b23850;
 
   --color-btn-txt: #ffffff;
   --color-btn-back: #0e6866;
@@ -11,12 +11,14 @@
 
   --color-border: #d9d9d9;
   --color-txt-alt: #075826;
-  --color-txt-mess: #10d7d2;
+  --color-txt-focus: #a1f1ef;
   --color-txt-err: #b95555;
   --color-txt-grey: #555555;
+  --color-txt-lightgrey: #cec8c8;
 
   --color-modal: #116466;
   --color-modal-back: #75bab6;
+  --color-modal-title: #dccfa1;
 }
 
 * {
@@ -74,12 +76,9 @@ h1 {
   text-transform: capitalize;
 }
 
-h2 {
-  color: #dccfa1;
-}
-
 .btn {
   min-width: 120px;
+  margin: 20px;
   padding: 10px 20px;
   color: var(--color-btn-txt);
   background-color: var(--color-btn-back);
@@ -91,6 +90,16 @@ h2 {
 
 .btn:hover {
   background-color: var(--color-btn-back-hover);
+}
+
+input::placeholder {
+  font-style: italic;
+  transition: all 0.5s ease;
+  color: var(--color-txt-lightgrey);
+}
+
+input:focus::placeholder {
+  color: var(--color-txt-focus);
 }
 
 .message {
