@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Modal } from './components/Modal/Modal.tsx';
 import { Form } from './components/Form/Form.tsx';
 import { FormHook } from './components/FormHook/FormHook.tsx';
+import { ReportFormHook } from './components/Report/ReportFormHook';
 
 export function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -38,12 +39,14 @@ export function App() {
             setModalVisible(false);
           }}
         >
-          { mode === 'Uncontrolled Form'?
+          {mode === 'Uncontrolled Form' ? (
             <Form onSubmit={() => setModalVisible(false)} />
-            :  <FormHook onSubmit={() => setModalVisible(false)} />
-}
+          ) : (
+            <FormHook onSubmit={() => setModalVisible(false)} />
+          )}
         </Modal>
       )}
+      <ReportFormHook />
     </>
   );
 }

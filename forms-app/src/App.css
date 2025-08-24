@@ -98,7 +98,7 @@ input::placeholder {
   color: var(--color-txt-lightgrey);
 }
 
-input:focus{
+input:focus {
   border-color: var(--color-txt-focus);
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
@@ -121,4 +121,9 @@ input:focus::placeholder {
 .controls-btn {
   min-width: 200px;
   margin: 20px;
+}
+
+.report {
+  color: var(--color-txt-alt);
+  font-size: 1.2rem;
 }

@@ -19,7 +19,7 @@ export function Form({ onSubmit }: IFormProps) {
   const [valueMail, setValueMail] = useState('');
   const [valuePassWord, setValuePassword] = useState('');
   const [valueGender, setValueGender] = useState('male');
-  const [valueAccept, setValueAccept] = useState('male');
+  const [valueAccept, setValueAccept] = useState('');
 
   const aFields: IField[] = [
     {
@@ -40,7 +40,7 @@ export function Form({ onSubmit }: IFormProps) {
       id: 3,
       name: 'mail',
       type: 'text',
-      placeholder: 'e-mail: name@mail.com',
+      placeholder: 'e-mail: name@mail.ex',
       label: '',
     },
     {
@@ -82,7 +82,7 @@ export function Form({ onSubmit }: IFormProps) {
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    onSubmit();
+    if (isValidForm()) onSubmit();
   };
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,9 +107,9 @@ export function Form({ onSubmit }: IFormProps) {
         setValueGender(event.target.value);
         break;
 
-      case 'accept':
-        setValueAccept(event.target.value);
-        break;
+      // case 'accept':
+      //   setValueAccept(event.target.value);
+      //   break;
     }
   };
 
@@ -131,6 +131,76 @@ export function Form({ onSubmit }: IFormProps) {
     }
   };
 
+  const isValidForm = () => {
+    let flValid = true;
+    let sError = '';
+
+    aFields.map((iInput) => {
+      console.log(iInput.name);
+      sError = '';
+      // const pInput = document.querySelector(
+      //   `.register input[name="${iInput.name}"]`,
+      // ) as HTMLInputElement;
+
+      // if (pInput) {
+      //   console.log (pInput)
+
+      //   sError = validField(pInput.value, iInput.name);
+
+      //   console.log(sError)
+
+      if (sError) flValid = false;
+
+      //   if (pInput.nextElementSibling)
+      //     pInput.nextElementSibling.textContent = sError;
+      // }
+    });
+
+    return flValid;
+  };
+
+  // function validField(value: string, name: string) {
+  //   const reName = /^[a-z\s-]+$/i; // /^[A-Za-z]+$/
+  //   const reEmail = /\w+@\w+\.[a-z]{2,3}/i;
+  //   const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+
+  //   let sError = '';
+
+  //   if (!value) sError = 'Field is required';
+  //   else {
+  //     switch (name) {
+  //       case 'name':
+  //         if (!reName.test(value)) sError = 'Only latin letters, spaces, - , _. First letter must be uppercase';
+  //         break;
+
+  //       case 'age':
+  //         if (Number(value) < 5) sError = 'The user must be over 5 years old';
+  //         else if (Number(value) > 120) sError = 'Age cannot exceed 120 years';
+  //         break;
+
+  //       case 'email':
+  //         if (!reEmail.test(value)) sError = 'Invalid email';
+  //         break;
+
+  //       case 'password':
+  //         if (value.length < 4) sError = 'Password must contain at least 4 characters';
+  //         else if (!rePassword.test(value))
+  //           sError = 'Password must contain uppercase, lowercase, number, special character';
+  //         break;
+  //     }
+  //   }
+  //   return sError;
+  // }
+
+  const setValues = () => {
+    setValueName('Nn');
+    setValueAge('24');
+    setValueMail('name@mail.ex');
+    setValueGender('male');
+    setValuePassword('Pp1%');
+    setValueAccept('true');
+  };
+
   return (
     <form onSubmit={submitHandler}>
       {aFields.map((iField) => (
@@ -143,23 +213,20 @@ export function Form({ onSubmit }: IFormProps) {
             placeholder={iField.placeholder}
             onChange={(event) => changeHandler(event)}
             key={iField.id}
-
-           min={iField.name === 'age'? 5 :'' }
-           max={iField.name === 'age'? 120 :'' }
-
+            min={iField.name === 'age' ? 5 : ''}
+            max={iField.name === 'age' ? 120 : ''}
           ></input>
 
           {iField.label && <p>{iField.label}</p>}
 
-          { iField.label !== 'male' &&<p className='input-message'></p>}
-
+          {iField.label !== 'male' && <p className="input-message"></p>}
         </div>
       ))}
 
       <button className="btn" onClick={submitHandler}>
         Submit
       </button>
-      <button type='button' className="btn">
+      <button type="button" className="btn" onClick={setValues}>
         Autocomplete
       </button>
     </form>

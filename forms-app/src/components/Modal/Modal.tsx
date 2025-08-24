@@ -1,6 +1,6 @@
 import './Modal.css';
 import ReactDom from 'react-dom';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
 interface IModalProps {
   children: React.ReactNode;
@@ -9,9 +9,8 @@ interface IModalProps {
 }
 
 export function Modal({ children, title, onClose }: IModalProps) {
-
-useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent):void => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === 'Escape') {
         onClose(); // Call the function to close the modal
       }
@@ -23,7 +22,6 @@ useEffect(() => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
-
 
   const pPortal = document.getElementById('portal');
   if (!pPortal) {
@@ -39,6 +37,6 @@ useEffect(() => {
         {children}
       </div>
     </>,
-   pPortal
+    pPortal
   );
 }

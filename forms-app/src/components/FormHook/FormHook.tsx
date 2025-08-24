@@ -30,13 +30,14 @@ export function FormHook({ onSubmit }: IFormProps) {
     handleSubmit,
     formState: { errors },
     watch,
-    reset
+    reset,
+    setValue,
   } = useForm<IFormData>({
     mode: 'onChange',
     defaultValues: {
       gender: 'male',
-      accept: false
-    }
+      accept: false,
+    },
   });
 
   const password = watch('pass1');
@@ -52,13 +53,13 @@ export function FormHook({ onSubmit }: IFormProps) {
         required: 'Name is required',
         minLength: {
           value: 2,
-          message: 'Name must be at least 2 characters'
+          message: 'Name must be at least 2 characters',
         },
         pattern: {
           value: /^[A-Z][a-zA-Z\s-]+$/,
-          message: 'Only latin letters, spaces, - , _. First letter must be uppercase'
-        }
-      }
+          message: 'Only latin letters, spaces, - , _. First letter must be uppercase',
+        },
+      },
     },
     {
       id: 2,
@@ -70,27 +71,27 @@ export function FormHook({ onSubmit }: IFormProps) {
         required: 'Age is required',
         min: {
           value: 5,
-          message: 'Age must be  > 5'
+          message: 'Age must be  > 5',
         },
         max: {
           value: 120,
-          message: 'Age must be < 120'
-        }
-      }
+          message: 'Age must be < 120',
+        },
+      },
     },
     {
       id: 3,
       name: 'mail',
       type: 'email',
-      placeholder: 'e-mail: name@mail.com',
+      placeholder: 'e-mail: name@mail.ex',
       label: '',
       validation: {
         required: 'Email is required',
         pattern: {
           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          message: 'Invalid email address'
-        }
-      }
+          message: 'Invalid email address',
+        },
+      },
     },
     {
       id: 4,
@@ -102,13 +103,13 @@ export function FormHook({ onSubmit }: IFormProps) {
         required: 'Password is required',
         minLength: {
           value: 4,
-          message: 'Password must be at least 4 characters'
+          message: 'Password must be at least 4 characters',
         },
         pattern: {
           value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-          message: 'Password must contain uppercase, lowercase, number, special character'
-        }
-      }
+          message: 'Password must contain uppercase, lowercase, number, special character',
+        },
+      },
     },
     {
       id: 5,
@@ -118,8 +119,8 @@ export function FormHook({ onSubmit }: IFormProps) {
       label: '',
       validation: {
         required: 'Please confirm your password',
-        validate: (value: string) => value === password || 'Passwords do not match'
-      }
+        validate: (value: string) => value === password || 'Passwords do not match',
+      },
     },
     {
       id: 6,
@@ -127,7 +128,7 @@ export function FormHook({ onSubmit }: IFormProps) {
       type: 'radio',
       placeholder: '',
       label: 'male',
-      validation: { required: 'Gender is required' }
+      validation: { required: 'Gender is required' },
     },
     {
       id: 7,
@@ -135,7 +136,7 @@ export function FormHook({ onSubmit }: IFormProps) {
       type: 'radio',
       placeholder: '',
       label: 'female',
-      validation: { required: 'Gender is required' }
+      validation: { required: 'Gender is required' },
     },
     {
       id: 8,
@@ -144,10 +145,20 @@ export function FormHook({ onSubmit }: IFormProps) {
       placeholder: '',
       label: 'accept Terms and Conditions agreement',
       validation: {
-        required: 'You must accept the terms and conditions'
-      }
+        required: 'You must accept the terms and conditions',
+      },
     },
   ];
+
+  const setValues = () => {
+    setValue('name', 'Nn');
+    setValue('age', 24);
+    setValue('mail', '');
+    setValue('pass1', 'Pp1%');
+    setValue('pass2', 'Pp1%');
+    setValue('gender', 'male');
+    setValue('accept', true);
+  };
 
   const onSubmitForm = (data: IFormData) => {
     onSubmit(data);
@@ -158,31 +169,29 @@ export function FormHook({ onSubmit }: IFormProps) {
     <form onSubmit={handleSubmit(onSubmitForm)} className="form">
       {aFields.map((iField) => (
         <div className="input-box" key={iField.id}>
-              <input
-                className={`input ${errors[iField.name] ? 'input-error' : ''}`}
-                type={iField.type}
-                placeholder={iField.placeholder}
-                {...register(iField.name, iField.validation)}
-              />
-              {iField.label && <p>{iField.label}</p>}
-              {/* {iField.label !== 'male' &&<p className='input-message'></p>} */}
+          <input
+            className={`input ${errors[iField.name] ? 'input-error' : ''}`}
+            type={iField.type}
+            placeholder={iField.placeholder}
+            {...register(iField.name, iField.validation)}
+          />
+          {iField.label && <p>{iField.label}</p>}
+          {/* {iField.label !== 'male' &&<p className='input-message'></p>} */}
 
-              {errors[iField.name]? (
-                <p className="input-message">{errors[iField.name]?.message}</p>
-              ): (iField.label !== 'male' && <p className='input-message'></p>)}
-
-
+          {errors[iField.name] ? (
+            <p className="input-message">{errors[iField.name]?.message}</p>
+          ) : (
+            iField.label !== 'male' && <p className="input-message"></p>
+          )}
         </div>
       ))}
 
       <button type="submit" className="btn">
         Submit
       </button>
-      <button type="button" className="btn">
+      <button type="button" className="btn" onClick={setValues}>
         Autocomplete
       </button>
-
-
     </form>
   );
 }
