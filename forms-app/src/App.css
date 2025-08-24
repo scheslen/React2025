@@ -124,6 +124,12 @@ input:focus::placeholder {
 }
 
 .report {
+  width: 400px;
+  margin: 0 auto;
   color: var(--color-txt-alt);
   font-size: 1.2rem;
+  text-align: left;
+}
+.report-item{
+  margin: 10px;
 }

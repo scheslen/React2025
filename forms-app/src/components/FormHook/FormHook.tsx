@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { type RootState } from '../../redux/store/store';
+import { updateFormData, submitForm } from '../../redux/store/formHookSlice';
 import './FormHook.css';
 
 interface IFormProps {
-  onSubmit: (data: IFormData) => void;
+  onSubmit?: (data: IFormData) => void;
 }
 
 interface IFormData {
@@ -25,6 +28,9 @@ interface IField {
 }
 
 export function FormHook({ onSubmit }: IFormProps) {
+  const dispatch = useDispatch();
+  const formData = useSelector((state: RootState) => state.form.formData);
+
   const {
     register,
     handleSubmit,
@@ -34,13 +40,18 @@ export function FormHook({ onSubmit }: IFormProps) {
     setValue,
   } = useForm<IFormData>({
     mode: 'onChange',
-    defaultValues: {
-      gender: 'male',
-      accept: false,
-    },
+    defaultValues: formData
+    // defaultValues: {
+    //   gender: 'male',
+    //   accept: false,
+    // },
   });
 
   const password = watch('pass1');
+
+  const handleInputChange = (fieldName: keyof IFormData, value: string | number | boolean) => {
+    dispatch(updateFormData({ [fieldName]: value }));
+  };
 
   const aFields: IField[] = [
     {
@@ -153,28 +164,37 @@ export function FormHook({ onSubmit }: IFormProps) {
   const setValues = () => {
     setValue('name', 'Nn');
     setValue('age', 24);
-    setValue('mail', '');
+    setValue('mail', 'name@mail.ex');
     setValue('pass1', 'Pp1%');
     setValue('pass2', 'Pp1%');
     setValue('gender', 'male');
     setValue('accept', true);
   };
 
-  const onSubmitForm = (data: IFormData) => {
-    onSubmit(data);
+const onSubmitForm = (data: IFormData) => {
+    dispatch(submitForm(data));
+    if (onSubmit) {
+      onSubmit(data);
+    }
     reset();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)} className="form">
+    <form onSubmit={handleSubmit(onSubmitForm)}>
       {aFields.map((iField) => (
         <div className="input-box" key={iField.id}>
           <input
             className={`input ${errors[iField.name] ? 'input-error' : ''}`}
             type={iField.type}
             placeholder={iField.placeholder}
-            {...register(iField.name, iField.validation)}
+            //{...register(iField.name, iField.validation)}
+
+             {...register(iField.name, {
+              ...iField.validation,
+              onChange: (e) => handleInputChange(iField.name, e.target.value)
+            })}
           />
+
           {iField.label && <p>{iField.label}</p>}
           {/* {iField.label !== 'male' &&<p className='input-message'></p>} */}
 
