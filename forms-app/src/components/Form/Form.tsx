@@ -131,16 +131,8 @@ export function Form({ onSubmit }: IFormProps) {
     }
   };
 
-  // const changeHandlerAge = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setValueAge(event.target.value);
-  // };
-
   return (
     <form onSubmit={submitHandler}>
-      {/* <input className="input-name" placeholder='name' value={valueName} onChange={(event) => changeHandlerName(event)}></input>
-      <input className="input-age" placeholder='age' value={valueAge} onChange={(event) => changeHandlerAge(event)}></input>
-      <input className="input-mail" placeholder='age' value={valueAge} onChange={(event) => changeHandlerAge(event)}></input> */}
-
       {aFields.map((iField) => (
         <div className="input-box">
           <input
@@ -151,14 +143,24 @@ export function Form({ onSubmit }: IFormProps) {
             placeholder={iField.placeholder}
             onChange={(event) => changeHandler(event)}
             key={iField.id}
+
+           min={iField.name === 'age'? 5 :'' }
+           max={iField.name === 'age'? 120 :'' }
+
           ></input>
 
           {iField.label && <p>{iField.label}</p>}
+
+          { iField.label !== 'male' &&<p className='input-message'></p>}
+
         </div>
       ))}
 
       <button className="btn" onClick={submitHandler}>
         Submit
+      </button>
+      <button type='button' className="btn">
+        Autocomplete
       </button>
     </form>
   );

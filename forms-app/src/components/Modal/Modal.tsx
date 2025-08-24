@@ -24,6 +24,13 @@ useEffect(() => {
     };
   }, [onClose]);
 
+
+  const pPortal = document.getElementById('portal');
+  if (!pPortal) {
+    console.error('Portal not found');
+    return null;
+  }
+
   return ReactDom.createPortal(
     <>
       <div className="modal-back" onClick={onClose}></div>
@@ -32,6 +39,6 @@ useEffect(() => {
         {children}
       </div>
     </>,
-    document.getElementById('portal')!
+   pPortal
   );
 }
