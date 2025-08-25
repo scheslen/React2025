@@ -1,27 +1,28 @@
 import { useState } from 'react';
+import * as yup from 'yup';
+import { validSchema } from '../../Yup/validSchema';
 import './Form.css';
+import React from 'react';
 
-interface IFormProps {
-  onSubmit: () => void;
+interface IData {
+  name: string;
+  age: number;
+  mail: string;
+  pass1: string;
+  pass2: string;
+  gender: 'male' | 'female';
+  accept: boolean;
 }
 
 interface IField {
   id: number;
-  name: string;
+  name: keyof IData;
   type: string;
   placeholder: string;
   label: string;
 }
 
-export function Form({ onSubmit }: IFormProps) {
-  const [valueName, setValueName] = useState('');
-  const [valueAge, setValueAge] = useState('');
-  const [valueMail, setValueMail] = useState('');
-  const [valuePassWord, setValuePassword] = useState('');
-  const [valueGender, setValueGender] = useState('male');
-  const [valueAccept, setValueAccept] = useState('');
-
-  const aFields: IField[] = [
+ const aFields: IField[] = [
     {
       id: 1,
       name: 'name',
@@ -80,146 +81,137 @@ export function Form({ onSubmit }: IFormProps) {
     },
   ];
 
-  const submitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (isValidForm()) onSubmit();
+interface IFormProps {
+  onSubmit: (data: IData) => void;
+}
+
+
+export function Form({ onSubmit }: IFormProps) {
+
+  const [formData, setFormData] = useState<IData>({
+    name: '',
+    age: 0,
+    mail: '',
+    pass1: '',
+    pass2: '',
+    gender: 'male',
+    accept: false
+  });
+
+const [errors, setErrors] = useState<Partial<Record<keyof IData, string>>>({});
+
+
+// React.useEffect(() => {
+//     console.log('Errors updated:', errors);
+//   }, [errors]);
+
+const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = event.target;
+
+    setFormData(prev => ({
+      ...prev,
+    [name]: type === 'checkbox' ? checked :
+            type === 'number' ? Number(value) : value
+  }));
+
   };
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    switch (event.target.name) {
-      case 'name':
-        setValueName(event.target.value);
-        break;
+  const isValidForm = async (): Promise<boolean> => {
+    try {
+      await validSchema.validate(formData, { abortEarly: false });
+      setErrors({});
+      return true;
+    } catch (error) {
 
-      case 'age':
-        setValueAge(event.target.value);
-        break;
+      if (error instanceof yup.ValidationError) {
+        const aErrors: Partial<Record<keyof IData, string>> = {};
+        error.inner.forEach(err => {
+          if (err.path) {
+            aErrors[err.path as keyof IData] = err.message;
+          }
+        });
 
-      case 'mail':
-        setValueMail(event.target.value);
-        break;
+        setErrors(aErrors);
 
-      case 'pass1':
-      case 'pass2':
-        setValuePassword(event.target.value);
-        break;
-      case 'gender':
-        setValueGender(event.target.value);
-        break;
-
-      // case 'accept':
-      //   setValueAccept(event.target.value);
-      //   break;
+      }
+      return false;
     }
+  };
+
+const submitHandler = async (event: React.FormEvent) => {
+
+  event.preventDefault();
+
+    const isValid = await isValidForm();
+
+    if (isValid) {
+      onSubmit(formData);
+
+      setFormData({
+        name: '',
+        age: 0,
+        mail: '',
+        pass1: '',
+        pass2: '',
+        gender: 'male',
+        accept: false
+      });
+    }
+  };
+
+  const setValues = () => {
+    setFormData({
+      name: 'Nn',
+      age: 24,
+      mail: 'name@mail.ex',
+      pass1: 'Pp1%',
+      pass2: 'Pp1%',
+      gender: 'male',
+      accept: true
+    });
   };
 
   const inputValue = (name: string) => {
     switch (name) {
       case 'name':
-        return valueName;
+        return formData.name;
       case 'age':
-        return valueAge;
+        return formData.age;
       case 'mail':
-        return valueMail;
+        return formData.mail;
       case 'pass1':
+         return formData.pass1;
       case 'pass2':
-        return valuePassWord;
+        return formData.pass2;
       case 'gender':
-        return valueGender;
-      case 'access':
-        return valueAccept;
+        return formData.gender;
     }
-  };
-
-  const isValidForm = () => {
-    let flValid = true;
-    let sError = '';
-
-    aFields.map((iInput) => {
-      console.log(iInput.name);
-      sError = '';
-      // const pInput = document.querySelector(
-      //   `.register input[name="${iInput.name}"]`,
-      // ) as HTMLInputElement;
-
-      // if (pInput) {
-      //   console.log (pInput)
-
-      //   sError = validField(pInput.value, iInput.name);
-
-      //   console.log(sError)
-
-      if (sError) flValid = false;
-
-      //   if (pInput.nextElementSibling)
-      //     pInput.nextElementSibling.textContent = sError;
-      // }
-    });
-
-    return flValid;
-  };
-
-  // function validField(value: string, name: string) {
-  //   const reName = /^[a-z\s-]+$/i; // /^[A-Za-z]+$/
-  //   const reEmail = /\w+@\w+\.[a-z]{2,3}/i;
-  //   const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-
-  //   let sError = '';
-
-  //   if (!value) sError = 'Field is required';
-  //   else {
-  //     switch (name) {
-  //       case 'name':
-  //         if (!reName.test(value)) sError = 'Only latin letters, spaces, - , _. First letter must be uppercase';
-  //         break;
-
-  //       case 'age':
-  //         if (Number(value) < 5) sError = 'The user must be over 5 years old';
-  //         else if (Number(value) > 120) sError = 'Age cannot exceed 120 years';
-  //         break;
-
-  //       case 'email':
-  //         if (!reEmail.test(value)) sError = 'Invalid email';
-  //         break;
-
-  //       case 'password':
-  //         if (value.length < 4) sError = 'Password must contain at least 4 characters';
-  //         else if (!rePassword.test(value))
-  //           sError = 'Password must contain uppercase, lowercase, number, special character';
-  //         break;
-  //     }
-  //   }
-  //   return sError;
-  // }
-
-  const setValues = () => {
-    setValueName('Nn');
-    setValueAge('24');
-    setValueMail('name@mail.ex');
-    setValueGender('male');
-    setValuePassword('Pp1%');
-    setValueAccept('true');
   };
 
   return (
     <form onSubmit={submitHandler}>
       {aFields.map((iField) => (
-        <div className="input-box">
+        <div className="input-box"  key={iField.id}>
           <input
-            className="input"
+            className={"input ${errors[iField.name] ? 'input-error' : ''}"}
             name={iField.name}
             value={inputValue(iField.name)}
             type={iField.type}
             placeholder={iField.placeholder}
             onChange={(event) => changeHandler(event)}
-            key={iField.id}
+
             min={iField.name === 'age' ? 5 : ''}
             max={iField.name === 'age' ? 120 : ''}
           ></input>
 
           {iField.label && <p>{iField.label}</p>}
 
-          {iField.label !== 'male' && <p className="input-message"></p>}
+          {errors[iField.name] ? (
+            <p className="input-message">{errors[iField.name]}</p>
+          ) : (
+            iField.label !== 'male' && <p className="input-message"></p>
+          )}
+
         </div>
       ))}
 
