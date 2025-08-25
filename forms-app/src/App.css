@@ -132,4 +132,17 @@ input:focus::placeholder {
 }
 .report-item{
   margin: 10px;
+  animation: 1s ease-in-out red;
+}
+
+@keyframes red {
+  from {
+   color: var(--color-title);
+   box-shadow: 1px 1px 10px 10px var(--color-title);
+  }
+
+  to {
+   color: var(--color-txt-alt);
+   box-shadow: none;
+  }
 }
