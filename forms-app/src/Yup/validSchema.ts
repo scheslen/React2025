@@ -14,10 +14,7 @@ export const validSchema = yup.object({
     .max(120, 'Age must be less than 120')
     .typeError('Age must be a number'),
 
-  mail: yup
-    .string()
-    .required('Email is required')
-    .email('Invalid email address'),
+  mail: yup.string().required('Email is required').email('Invalid email address'),
 
   pass1: yup
     .string()
@@ -33,13 +30,10 @@ export const validSchema = yup.object({
     .required('Please confirm your password')
     .oneOf([yup.ref('pass1')], 'Passwords do not match'),
 
-  gender: yup
-    .string()
-    .required('Gender is required')
-    .oneOf(['male', 'female'], 'Invalid gender selection'),
+  gender: yup.string().required('Gender is required').oneOf(['male', 'female'], 'Invalid gender selection'),
 
   accept: yup
     .boolean()
     .required('You must accept the terms and conditions')
-    .oneOf([true], 'You must accept the terms and conditions')
+    .oneOf([true], 'You must accept the terms and conditions'),
 });

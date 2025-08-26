@@ -44,13 +44,13 @@ export const formSlice = createSlice({
     },
     autoFillForm: (state) => {
       state.formData = {
-      name: 'Nn',
-      age: 24,
-      mail: 'name@mail.ex',
-      pass1: 'Pp1%',
-      pass2: 'Pp1%',
-      gender: 'male',
-      accept: true
+        name: 'Nn',
+        age: 24,
+        mail: 'name@mail.ex',
+        pass1: 'Pp1%',
+        pass2: 'Pp1%',
+        gender: 'male',
+        accept: true,
       };
     },
   },

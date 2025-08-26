@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { type RootState } from '../../redux/store/store';
-import { updateFormData, submitForm } from '../../redux/store/formHookSlice';
+import { updateFormData, submitForm } from '../../redux/formHookSlice';
 import './FormHook.css';
 
 interface IFormProps {
@@ -40,7 +40,7 @@ export function FormHook({ onSubmit }: IFormProps) {
     setValue,
   } = useForm<IFormData>({
     mode: 'onChange',
-    defaultValues: formData
+    defaultValues: formData,
     // defaultValues: {
     //   gender: 'male',
     //   accept: false,
@@ -171,7 +171,7 @@ export function FormHook({ onSubmit }: IFormProps) {
     setValue('accept', true);
   };
 
-const onSubmitForm = (data: IFormData) => {
+  const onSubmitForm = (data: IFormData) => {
     dispatch(submitForm(data));
     if (onSubmit) {
       onSubmit(data);
@@ -189,9 +189,9 @@ const onSubmitForm = (data: IFormData) => {
             placeholder={iField.placeholder}
             //{...register(iField.name, iField.validation)}
 
-             {...register(iField.name, {
+            {...register(iField.name, {
               ...iField.validation,
-              onChange: (e) => handleInputChange(iField.name, e.target.value)
+              onChange: (e) => handleInputChange(iField.name, e.target.value),
             })}
           />
 
